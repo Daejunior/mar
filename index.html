@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Okosi | Premium Virtual Assistant</title>
+    <meta name="description" content="High-end virtual assistance for executives and entrepreneurs">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#6366F1',
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            200: '#C7D2FE',
+                            300: '#A5B4FC',
+                            400: '#818CF8',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                            800: '#3730A3',
+                            900: '#312E81',
+                        },
+                        secondary: {
+                            DEFAULT: '#10B981',
+                            50: '#ECFDF5',
+                            100: '#D1FAE5',
+                            200: '#A7F3D0',
+                            300: '#6EE7B7',
+                            400: '#34D399',
+                            500: '#10B981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065F46',
+                            900: '#064E3B',
+                        },
+                        dark: '#0F172A',
+                        light: '#F8FAFC',
+                        accent: '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #6366F1 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-icon {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        /* Form status messages */
+        .form-status {
+            display: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-status.success {
+            display: block;
+            background-color: #D1FAE5;
+            color: #065F46;
+            border: 1px solid #A7F3D0;
+        }
+        
+        .form-status.error {
+            display: block;
+            background-color: #FEE2E2;
+            color: #B91C1C;
+            border: 1px solid #FECACA;
+        }
+        
+        /* Loading spinner for form submission */
+        .form-loading {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #6366F1;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Performance optimizations */
+        img {
+            content-visibility: auto;
+        }
+        
+        .will-change {
+            will-change: transform, opacity;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #F3F4F6;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #6366F1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4F46E5;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl">MO</div>
+                    <span class="font-display font-semibold text-xl">Mary Okosi</span>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-10">
+                    <a href="#home" class="font-medium text-dark hover:text-primary-600 transition-colors">Home</a>
+                    <a href="#services" class="font-medium text-dark hover:text-primary-600 transition-colors">Services</a>
+                    <a href="#process" class="font-medium text-dark hover:text-primary-600 transition-colors">Process</a>
+                    <a href="#testimonials" class="font-medium text-dark hover:text-primary-600 transition-colors">Clients</a>
+                    <a href="#contact" class="font-medium text-white bg-primary-600 px-5 py-2 rounded-lg hover:bg-primary-700 transition-colors">Contact</a>
+                </div>
+                
+                <button class="lg:hidden text-dark focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu lg:hidden bg-white" id="mobile-menu">
+                <div class="px-2 pt-2 pb-4 space-y-2">
+                    <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-primary-50 hover:text-primary-600 transition-colors">Home</a>
+                    <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-primary-50 hover:text-primary-600 transition-colors">Services</a>
+                    <a href="#process" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-primary-50 hover:text-primary-600 transition-colors">Process</a>
+                    <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-primary-50 hover:text-primary-600 transition-colors">Clients</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary-600 hover:bg-primary-700 transition-colors">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary-100/20 to-white"></div>
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary-400 filter blur-3xl opacity-30"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-secondary-400 filter blur-3xl opacity-30"></div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-16 lg:mb-0">
+                    <div class="inline-block px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-medium mb-6">
+                        <span class="mr-2">✨</span> Executive Communication Strategy
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+                        Command the Room. <span class="gradient-text">Influence the Board.</span> Lead with Authority.
+                    </h1>
+                    <p class="text-lg md:text-xl text-dark/80 mb-10 max-w-2xl">
+                        I partner with executives, professionals, and business leaders to sharpen their communication and presence. From boardroom negotiations to keynote stages, I help you master clarity, elevate influence and deliver messages that move people and drive results.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors text-center shadow-lg shadow-primary-100">
+                            Get Started <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#services" class="border-2 border-dark px-8 py-4 rounded-lg font-semibold hover:bg-dark hover:text-white transition-colors text-center">
+                            Explore Services
+                        </a>
+                    </div>
+                    
+                    <div class="mt-16 flex items-center space-x-8">
+                        <div class="flex -space-x-3">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-white">
+                            <img src="image/FB_IMG_1730289082989.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-white">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-white">
+                        </div>
+                        <div>
+                            <div class="flex items-center">
+                                <div class="flex text-amber-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="font-medium">5.0</span>
+                            </div>
+                            <p class="text-dark/60">Trusted by 150+ executives</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-16 will-change">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 w-64 h-64 bg-primary-200 rounded-2xl rotate-12 hidden md:block"></div>
+                        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-secondary-200 rounded-2xl -rotate-12 hidden md:block"></div>
+                        <img src="image/DSC_9912 copy-1.jpg" 
+                             alt="Mary Okosi - Professional Communication Coach" 
+                             class="relative z-10 w-full h-auto max-w-xl rounded-2xl shadow-2xl object-cover mx-auto"
+                             loading="lazy">
+                        <div class="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-xl shadow-lg hidden md:block">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mr-3">
+                                    <i class="fas fa-check text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Available Now</p>
+                                    <p class="text-sm text-dark/60">Taking new clients</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-12 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <p class="text-center text-white/60 mb-8">TRUSTED BY INNOVATIVE COMPANIES</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" class="h-8 opacity-60 hover:opacity-100 transition-opacity mx-auto" loading="lazy">
+                <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" class="h-8 opacity-60 hover:opacity-100 transition-opacity mx-auto" loading="lazy">
+                <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" class="h-8 opacity-60 hover:opacity-100 transition-opacity mx-auto" loading="lazy">
+                <img src="https://logo.clearbit.com/slack.com" alt="Slack" class="h-8 opacity-60 hover:opacity-100 transition-opacity mx-auto" loading="lazy">
+                <img src="https://logo.clearbit.com/dropbox.com" alt="Dropbox" class="h-8 opacity-60 hover:opacity-100 transition-opacity mx-auto" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-medium mb-4">
+                    SERVICES
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+                    Elite <span class="gradient-text">Communication and Leadership</span> Solutions
+                </h2>
+                <p class="text-lg text-dark/60 max-w-3xl mx-auto">
+                    Tailored coaching and strategy for high-performing executives who demand precision, presence, and influence at the highest level.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-microphone text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Keynote & High-visibility Speech Preparation</h3>
+                    <p class="text-dark/70 mb-6">
+                        Step onto the stage with authority and leave a lasting impression. Every word, gesture, and pause designed for maximum impact.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Speech-writing & Structure Design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Stage-craft & Audience Connection</span>
+                        </li>
+                        <li class="flex items start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Handling Q&A with Finesse</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-chess-king text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Strategic Leadership Communication</h3>
+                    <p class="text-dark/70 mb-6">
+                        Craft messaging that inspires confidence, builds trust and drives decisions at the highest levels.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Persuasive Storytelling Frameworks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Boardroom & Stakeholder Influence </span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>High-stakes Communication Strategy</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-comments text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Workplace Communication Mastery</h3>
+                    <p class="text-dark/70 mb-6">
+                        Empower yourself and your teams with advanced communication strategies to lead, negotiate, and collaborate seamlessly.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Leading Difficult Conversations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Cross-cultural Clarity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Team Alignment & Influence</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-user-tie text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Executive Presence Coaching </h3>
+                    <p class="text-dark/70 mb-6">
+                        Refine your voice, elevate your authority and project confidence that commands any room.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Vocal Mastery & Articulation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Confident Executive Delivery</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Eliminating Filler Words and Blankness</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-chart-line text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Investors & Stakeholder Pitch Coaching</h3>
+                    <p class="text-dark/70 mb-6">
+                        Deliver compelling, confident pitches that secure buy-in from investors, boards, and high-value Stakeholders.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Storytelling for Vision & Impact</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Structuring Persuasive Presentation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Navigating Objections with Confidence</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow will-change">
+                    <div class="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-6 service-icon">
+                        <i class="fas fa-video text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-semibold mb-4">Media & Interview Readiness</h3>
+                    <p class="text-dark/70 mb-6">
+                        Equip yourself to handle press, interviews, and panel discusions with poise and authority.
+                    </p>
+                    <ul class="space-y-3 text-dark/80">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>On-camera Confidence & Delivery</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Managing Tough or Unexpected Questions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-500 mt-1 mr-3"></i>
+                            <span>Crisis Communication</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 rounded-full bg-primary-600/10 text-primary-400 font-medium mb-4">
+                    MY PROCESS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+                    The <span class="text-primary-400">Okosi Excellence</span> Protocol
+                </h2>
+                <p class="text-lg text-white/60 max-w-3xl mx-auto">
+                    A meticulously crafted coaching process designed to transform your communication skills and executive presence.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="absolute -top-1 -left-1 w-16 h-16 bg-primary-600 rounded-xl opacity-20"></div>
+                    <div class="relative bg-dark-800 p-8 rounded-xl border border-white/10 h-full">
+                        <div class="w-14 h-14 bg-primary-600 rounded-lg flex items-center justify-center text-white text-xl font-bold mb-6">01</div>
+                        <h3 class="text-xl font-display font-semibold mb-4">Discovery & Assessment</h3>
+                        <p class="text-white/70 mb-6">
+                            Comprehensive evaluation of your communication style, strengths, and areas for growth.
+                        </p>
+                        <ul class="space-y-3 text-white/80">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-400 mt-1 mr-3"></i>
+                                <span>Communication Style Analysis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-400 mt-1 mr-3"></i>
+                                <span>Goal Alignment Session</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-400 mt-1 mr-3"></i>
+                                <span>Customized Development Plan</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="absolute -top-1 -left-1 w-16 h-16 bg-secondary-600 rounded-xl opacity-20"></div>
+                    <div class="relative bg-dark-800 p-8 rounded-xl border border-white/10 h-full">
+                        <div class="w-14 h-14 bg-secondary-600 rounded-lg flex items-center justify-center text-white text-xl font-bold mb-6">02</div>
+                        <h3 class="text-xl font-display font-semibold mb-4">Skill Development</h3>
+                        <p class="text-white/70 mb-6">
+                            Targeted coaching sessions to build your communication mastery and executive presence.
+                        </p>
+                        <ul class="space-y-3 text-white/80">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary-400 mt-1 mr-3"></i>
+                                <span>Personalized Coaching Sessions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary-400 mt-1 mr-3"></i>
+                                <span>Practical Application Exercises</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary-400 mt-1 mr-3"></i>
+                                <span>Real-time Feedback & Refinement</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="absolute -top-1 -left-1 w-16 h-16 bg-accent rounded-xl opacity-20"></div>
+                    <div class="relative bg-dark-800 p-8 rounded-xl border border-white/10 h-full">
+                        <div class="w-14 h-14 bg-accent rounded-lg flex items-center justify-center text-white text-xl font-bold mb-6">03</div>
+                        <h3 class="text-xl font-display font-semibold mb-4">Mastery & Integration</h3>
+                        <p class="text-white/70 mb-6">
+                            Ensuring your new skills become second nature in your professional life.
+                        </p>
+                        <ul class="space-y-3 text-white/80">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-amber-400 mt-1 mr-3"></i>
+                                <span>Real-world Application</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-amber-400 mt-1 mr-3"></i>
+                                <span>Ongoing Support & Refinement</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-amber-400 mt-1 mr-3"></i>
+                                <span>Long-term Growth Strategy</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-medium mb-4">
+                    CLIENT IMPACT
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+                    Trusted by <span class="gradient-text">Visionary Leaders</span>
+                </h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 will-change">
+                    <div class="flex items-start mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Sarah Johnson" 
+                             class="w-16 h-16 rounded-full object-cover mr-6"
+                             loading="lazy">
+                        <div>
+                            <h3 class="font-display font-semibold text-xl">Sarah Johnson</h3>
+                            <p class="text-dark/60">CEO, TechScale</p>
+                            <div class="flex mt-2">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-dark/80 italic mb-6">
+                        "Mary transformed my public speaking abilities. Her approach to speech preparation helped me deliver a TEDx talk that received a standing ovation. Her ability to identify subtle areas for improvement is remarkable."
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-sm font-medium">Public Speaking</span>
+                        <span class="px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-sm font-medium">Executive Presence</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 will-change">
+                    <div class="flex items-start mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Michael Chen" 
+                             class="w-16 h-16 rounded-full object-cover mr-6"
+                             loading="lazy">
+                        <div>
+                            <h3 class="font-display font-semibold text-xl">Michael Chen</h3>
+                            <p class="text-dark/60">Founder, VentureLabs</p>
+                            <div class="flex mt-2">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-dark/80 italic mb-6">
+                        "Working with Mary revolutionized how I communicate with investors. Her pitch coaching helped us secure $4M in Series A funding. She has an incredible talent for refining messages to maximize impact."
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-sm font-medium">Investor Pitching</span>
+                        <span class="px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-sm font-medium">Strategic Messaging</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-800 transition-colors">
+                    See more client success stories
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-display font-bold mb-6">
+                    Communication <span class="gradient-text">Methodologies</span>
+                </h2>
+                <p class="text-dark/60 max-w-3xl mx-auto">
+                    Research-backed frameworks and tools to enhance your communication effectiveness.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-brain text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Neuro-Linguistic Programming</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Strategic Framing</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-book-open text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Narrative Psychology</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-users text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Audience Analysis</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-microphone text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Vocal Dynamics</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <i class="fas fa-hands text-3xl text-primary-600 mb-2"></i>
+                        <p class="text-sm font-medium">Nonverbal Intelligence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Transform Your Communication Impact?</h2>
+            <p class="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
+                Schedule a confidential consultation to explore how executive communication coaching can elevate your leadership presence.
+            </p>
+            <a href="#contact" class="inline-block bg-white text-primary-600 px-10 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg shadow-primary-600/30">
+                Begin Partnership Inquiry
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-16 lg:mb-0 lg:pr-16">
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+                        Let's <span class="gradient-text">Collaborate</span>
+                    </h2>
+                    <p class="text-lg text-dark/70 mb-10">
+                        Complete the form to initiate a confidential discussion about your communication development needs. All inquiries receive response within 24 hours.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center text-primary-600 mr-6">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-semibold text-lg mb-1">Email</h3>
+                                <a href="mailto:maryokosi65@gmail.com" class="text-primary-600 hover:text-primary-800 transition-colors">maryokosi65@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center text-primary-600 mr-6">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-semibold text-lg mb-1">Direct Line</h3>
+                                <a href="tel:+2349060901727" class="text-primary-600 hover:text-primary-800 transition-colors">+2349060901727</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center text-primary-600 mr-6">
+                                <i class="fas fa-calendar-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-semibold text-lg mb-1">Direct Booking</h3>
+                                <a href="#" class="text-primary-600 hover:text-primary-800 transition-colors">Schedule Introductory Call</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <!-- Form Status Messages -->
+                    <div id="form-success" class="form-status success">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Thank you for your inquiry! I'll contact you within 24 hours.
+                    </div>
+                    
+                    <div id="form-error" class="form-status error">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        There was an error submitting your form. Please try again or email me directly.
+                    </div>
+                    
+                    <div id="form-loading" class="form-loading">
+                        <div class="spinner"></div>
+                        <p class="mt-2">Submitting your inquiry...</p>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <form class="bg-gray-50 p-8 rounded-2xl shadow-sm" id="contact-form">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="first-name" class="block text-dark font-medium mb-2">First Name *</label>
+                                <input type="text" id="first-name" name="first-name" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-dark font-medium mb-2">Last Name *</label>
+                                <input type="text" id="last-name" name="last-name" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-dark font-medium mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="company" class="block text-dark font-medium mb-2">Company</label>
+                            <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="service" class="block text-dark font-medium mb-2">Primary Service Interest *</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white appearance-none" required>
+                                <option value="">Select service</option>
+                                <option value="Keynote & Speech Preparation">Keynote & Speech Preparation</option>
+                                <option value="Strategic Leadership Communication">Strategic Leadership Communication</option>
+                                <option value="Workplace Communication Mastery">Workplace Communication Mastery</option>
+                                <option value="Executive Presence Coaching">Executive Presence Coaching</option>
+                                <option value="Investor Pitch Coaching">Investor Pitch Coaching</option>
+                                <option value="Media & Interview Readiness">Media & Interview Readiness</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <label for="message" class="block text-dark font-medium mb-2">How can I assist you? *</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+                            Submit Inquiry
+                            <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl">MO</div>
+                        <span class="font-display font-semibold text-xl">Mary Okosi</span>
+                    </div>
+                    <p class="text-white/60 mb-8 max-w-md">
+                        Executive communication coaching for leaders, founders, and high-performing professionals who demand excellence.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-white/60 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-white/60 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white/60 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-display font-semibold text-lg mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors">Keynote Preparation</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors">Leadership Communication</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors">Workplace Mastery</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors">Executive Presence</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors">Pitch Coaching</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-display font-semibold text-lg mb-6">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-white/60 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#process" class="text-white/60 hover:text-white transition-colors">Process</a></li>
+                        <li><a href="#testimonials" class="text-white/60 hover:text-white transition-colors">Clients</a></li>
+                        <li><a href="#contact" class="text-white/60 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-white transition-colors">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/50 text-sm mb-4 md:mb-0">
+                    © 2025 Mary Okosi Executive Communication. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white/50 hover:text-white transition-colors text-sm">Terms</a>
+                    <a href="#" class="text-white/50 hover:text-white transition-colors text-sm">Privacy</a>
+                    <a href="#" class="text-white/50 hover:text-white transition-colors text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            mobileMenuButton.innerHTML = mobileMenu.classList.contains('open') ? 
+                '<i class="fas fa-times text-2xl"></i>' : 
+                '<i class="fas fa-bars text-2xl"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+            }
+        });
+        
+        // Form submission with Formspree
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        const formError = document.getElementById('form-error');
+        const formLoading = document.getElementById('form-loading');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                formLoading.style.display = 'block';
+                formSuccess.style.display = 'none';
+                formError.style.display = 'none';
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                
+                try {
+                    // Send form data to Formspree
+                    const response = await fetch('https://formspree.io/f/mandajez', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        formSuccess.style.display = 'block';
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    // Show error message
+                    formError.style.display = 'block';
+                    console.error('Form submission error:', error);
+                } finally {
+                    // Hide loading state
+                    formLoading.style.display = 'none';
+                    
+                    // Scroll to form messages
+                    document.getElementById('form-success').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center'
+                    });
+                }
+            });
+        }
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.will-change');
+            
+            elements.forEach(el => {
+                const elementPosition = el.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    el.classList.add('animate-fade-in');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
